@@ -1,0 +1,4 @@
+rich
+argparse
+pyfiglet
+pynput
