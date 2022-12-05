@@ -25,3 +25,5 @@ SpookyShell has a wide range of features, including:
  SpookyShell should create the needed files such as **data.dat** and a few others.
  If you ever have any problems, try running with the **-V** flag, this will give you a lot more information
  for troubleshooting. Or try with the **-h** flag to get all the information on arguments you can pass to SpookyShell.
+
+## Screenshots
