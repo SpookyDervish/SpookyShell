@@ -17,6 +17,11 @@ SpookyShell has a wide range of features, including:
  Just clone this repository with
  ```
  git clone https://github.com/SpookyDervish/SpookyShell 
+ ``` 
+ 
+ And install dependencies with
+ ```
+ pip install -r requirements.txt
  ```
  
  and run **main.py**.
