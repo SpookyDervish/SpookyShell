@@ -1,7 +1,8 @@
 # SpookyShell
 ### The next best reverse shell.
 
-SpookyShell is a reverse shell designed for cryber security professionals and red teams. SpookyShell has many features for system admins, read teams, and anyone else alike.
+SpookyShell is a reverse shell designed for cryber security professionals and red teams. 
+It has many features for system admins, read teams, and anyone else alike.
 SpookyShell is written entirely in python but is designed to be fast non the less.
 
 ## Features
