@@ -397,29 +397,34 @@ def update():
         print_but_cooler(console, "Info", "Pulling changes from master branch[white]...[/white]", "bold cyan")
 
         if verbose:
-            print_but_cooler(console, "Info", f"Running \"cd {cwd}&&git pull https://github.com/SpookyDervish/SpookyShell main\"..", "bold cyan")
-        u = check_output(f'cd {cwd}&&git pull https://github.com/SpookyDervish/SpookyShell main', shell=True).decode('utf-8')
-
+            print_but_cooler(console, "Info", f"Running \"cd {cwd}&&git pull https://github.com/SpookyDervish/SpookyShell.git main\"..", "bold cyan")
+        u = check_output(f'cd {cwd}&&git pull https://github.com/SpookyDervish/SpookyShell.git main', shell=True).decode('utf-8')
+        
         if re.search("Updating", u):
             if verbose:
                 print_but_cooler(console, "Info", "Update succeeded, displaying restart message..", "bold cyan")
             print_but_cooler(console, "Info", "Successfully updated! Please restart SpookyShell.", "bold cyan")
             updated = True
+            print("Press any key to continue..")
+            getch()
         elif re.search('Already up to date', u):
             if verbose:
                 print_but_cooler(console, "Info", "Displaying up-to-date message..", "bold cyan")
             print_but_cooler(console, "Info", "Already running latest version of SpookyShell!", "bold cyan")
+            print("Press any key to continue..")
             getch()
         else:
             if verbose:
                 print_but_cooler(console, "Info", "Displaying error message..", "bold cyan")
             print_but_cooler(console, "Error", "Something went wrong. Are you running SpookyShell from your local git repository?", "bold red")
-            print_but_cooler(console, "Info", 'Consider running "git pull https://github.com/SpookyDervish/SpookyShell main" inside the project\'s directory.', "bold cyan")
+            print_but_cooler(console, "Info", 'Consider running "git pull https://github.com/SpookyDervish/SpookyShell.git main" inside the project\'s directory.', "bold cyan")
+            print("Press any key to continue..")
             getch()
     except:
         if verbose:
             print_but_cooler(console, "Info", "Displaying error messsage..", "bold cyan")
-        print_but_cooler(console, "Error", 'Update failed. Consider running "git pull https://github.com/SpookyDervish/SpookyShell main" inside the project\'s directory.', "bold red")
+        print_but_cooler(console, "Error", 'Update failed. Consider running "git pull https://github.com/SpookyDervish/SpookyShell.git main" inside the project\'s directory.', "bold red")
+        print("Press any key to continue..")
         getch()
 
     if updated:
