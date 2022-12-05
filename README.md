@@ -15,7 +15,9 @@ SpookyShell has a wide range of features, including:
  
  ## Installation
  Just clone this repository with
- $ git clone https://github.com/SpookyDervish/SpookyShell 
+ ```
+ git clone https://github.com/SpookyDervish/SpookyShell 
+ ```
  
  and run **main.py**.
  This should open the login screen, just register a new account and be on your way!
