@@ -6,9 +6,9 @@ import pickle
 import time
 
 try:
-    from getch import getch
+    from getch import getch  # Linux
 except ImportError:
-    from msvcrt import getch
+    from msvcrt import getch # Windows
 
 from util import console, print_but_cooler, read_data, clear_screen, yes_no_prompt
 from pyfiglet import print_figlet
