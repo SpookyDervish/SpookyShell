@@ -5,7 +5,11 @@ import hashlib
 import pickle
 import time
 
-from msvcrt import getch
+try:
+    from getch import getch
+except ImportError:
+    from msvcrt import getch
+
 from util import console, print_but_cooler, read_data, clear_screen, yes_no_prompt
 from pyfiglet import print_figlet
 
