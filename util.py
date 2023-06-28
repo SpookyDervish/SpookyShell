@@ -24,7 +24,7 @@ def read_data(file: str):
         print()
         print_but_cooler(console, "Warn", f"The file [underline]{file}[/underline] does not exist, creating..", "bold gold1")
 
-        os.open(file,os.O_BINARY | os.O_CREAT)
+        os.open(file, "a").close()
 
         with open(file, "wb") as f:
             pickle.dump([[],[],[]], f)
