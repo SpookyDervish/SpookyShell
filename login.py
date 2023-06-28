@@ -56,7 +56,7 @@ def sign_up(quiet: bool):
     if os.name == "nt":
         password = mpass()
     else:
-        password = console.input("Password: ")
+        password = console.input("Password: ", password=True)
         
     hashed = hashlib.pbkdf2_hmac("sha256", password.encode("utf-8"), b"(*!@#s", 823)
     new_pass = hashed.hex()
@@ -138,7 +138,7 @@ def login_screen(quiet: bool = False):
                     if os.name == "nt":
                         password = mpass()
                     else:
-                        password = console.input("Password: ")
+                        password = console.input("Password: ", password=True)
                     hashed = hashlib.pbkdf2_hmac("sha256", password.encode("utf-8"), b"(*!@#s", 823)
 
                     pass_input = hashed.hex()
