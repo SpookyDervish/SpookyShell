@@ -70,8 +70,7 @@ def sign_up(quiet: bool):
     pickle.dump(data, open("data.dat", "wb"))
 
     print_but_cooler(console, "Info", "Successfully created the new user!", "bold cyan")
-    console.print("\nPress any key to continue[white]...[/white]")
-    getch()
+    time.sleep(1)
     clear_screen()
     print_banner(quiet)
 
