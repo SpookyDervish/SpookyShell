@@ -4,12 +4,10 @@ import getpass
 import hashlib
 import pickle
 import time
+import os
 
-try:
-    from getch import getch  # Linux
-except ImportError:
-    from msvcrt import getch # Windows
-
+if os.name == "nt":
+    from msvcrt import getch
 from util import console, print_but_cooler, read_data, clear_screen, yes_no_prompt
 from pyfiglet import print_figlet
 
@@ -54,7 +52,12 @@ def sign_up(quiet: bool):
             print_but_cooler(console, "Error", "User already exists!", "bold red")
         else:
             break
-    password = mpass()
+
+    if os.name == "nt":
+        password = mpass()
+    else:
+        password = console.input("Password: ")
+        
     hashed = hashlib.pbkdf2_hmac("sha256", password.encode("utf-8"), b"(*!@#s", 823)
     new_pass = hashed.hex()
 
@@ -133,7 +136,10 @@ def login_screen(quiet: bool = False):
                     else:
                         print_but_cooler(console, "Error", "The specified user does not exist.", "bold red")
                 while True:
-                    password = mpass()
+                    if os.name == "nt":
+                        password = mpass()
+                    else:
+                        password = console.input("Password: ")
                     hashed = hashlib.pbkdf2_hmac("sha256", password.encode("utf-8"), b"(*!@#s", 823)
 
                     pass_input = hashed.hex()
