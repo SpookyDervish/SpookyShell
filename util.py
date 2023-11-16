@@ -11,7 +11,7 @@ console = Console()
 
 
 # ==// FUNCTIONS \\==#
-def read_data(file: str):
+def read_data(file: str, verbose=False):
     data = []
 
     try:
@@ -21,8 +21,9 @@ def read_data(file: str):
         data = [[],[],[]]
     except FileNotFoundError:
         # The file doesn't exist
-        print()
-        print_but_cooler(console, "Warn", f"The file [underline]{file}[/underline] does not exist, creating..", "bold gold1")
+        if verbose:
+            print()
+            print_but_cooler(console, "Warn", f"The file [underline]{file}[/underline] does not exist, creating..", "bold gold1")
 
         open(file, "a").close()
 
