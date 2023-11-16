@@ -103,13 +103,13 @@ def login_screen(quiet: bool = False):
 
         print("*** [bold]Operator Login[/bold] ***\n")
 
-        print("[bold light_goldenrod2]=========================[/bold light_goldenrod2]")
+        print("[bold light_goldenrod2]<=========================>[/bold light_goldenrod2]")
         print("[bold][1][/bold] Login")
         print("[bold][2][/bold] Register")
         print("[bold][3][/bold] Exit")
-        print("[bold light_goldenrod2]=========================[/bold light_goldenrod2]\n")
+        print("[bold light_goldenrod2]<=========================>[/bold light_goldenrod2]\n")
 
-        user_input = input("[bold]>[/bold] ")
+        user_input = input("[bold]Choice >[/bold] ")
         
         if user_input == "1":
             data = read_data("data.dat")

@@ -10,7 +10,7 @@ from util import print_but_cooler
 class Command(BaseCommand):
     """Get a list of commands and information.
 
-    If ranwith arguments, it will try to find a command and provide more information on it.
+    If ran with arguments, it will try to find a command and provide more information on it.
     Otherwise if it cant find a command it will display an error.
 
     If it cannot find more info on a command it will just show "This command doesn't have any extra information.".
@@ -81,5 +81,6 @@ class Command(BaseCommand):
                     )
 
                 table.add_row(command, help)
-
+            
+            args[0].print("[bold]Type \"help\" and then the name of a command for more information.[/bold]")
             args[0].print(table)
